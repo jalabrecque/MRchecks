@@ -132,7 +132,7 @@ SNPxAGE_bias <- function(SNPxAGE_model_output, rep = 2, age_set = 65) {
     }) %>%
       unlist %>%
       c(iv_den, iv_avg, .) %>%
-      set_names(c("iv_den65","iv_avg",outcomes))
+      magrittr::set_names(c("iv_den65","iv_avg",outcomes))
 
     # Observed age
     d_rep_obs$SNP_no_factor <- as.numeric(d_rep_obs$SNP)
