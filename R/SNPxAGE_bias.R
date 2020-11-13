@@ -9,7 +9,6 @@
 #'
 #' @return A list of results
 #'
-#' @importFrom magrittr `%>%`
 #' @export
 #'
 #' @examples
