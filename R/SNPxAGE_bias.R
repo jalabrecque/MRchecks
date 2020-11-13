@@ -162,8 +162,8 @@ SNPxAGE_bias <- function(SNPxAGE_model_output, rep = 2, age_set = 65) {
     return(c(mean(param),sqrt(var(param)), quantile(x = param, probs = c(0.025,0.975))))
   }) %>%
     t %>%
-    set_colnames(c("est","se","q025","q975")) %>%
-    set_rownames(c("iv_den65","iv_avg",outcomes,"iv_den_obs",outcomes_obs))
+    magrittr::set_colnames(c("est","se","q025","q975")) %>%
+    magrittr::set_rownames(c("iv_den65","iv_avg",outcomes,"iv_den_obs",outcomes_obs))
 
   return(output)
 
