@@ -78,12 +78,12 @@ SNPxAGE_bias <- function(SNPxAGE_model_output, rep = 2, age_set = 65) {
     )
 
     # Applying exposure windows at age 65
-    d_rep$y5 <- (as.matrix(select(d_rep,paste0("pred_",(age_set-4):age_set))) %*% y_window_5l)/3
-    if (age_range_width>=10) d_rep$y10 <- (as.matrix(select(d_rep,paste0("pred_",(age_set-9):age_set))) %*% y_window_10l)/5.5
-    if (age_range_width>=25) d_rep$y25 <- (as.matrix(select(d_rep,paste0("pred_",(age_set-24):age_set))) %*% y_window_25l)/13
-    d_rep$y5_gauss <- (as.matrix(select(d_rep,paste0("pred_",age_range[1]:age_set))) %*% y_window_5g)/0.993
-    if (age_range_width>=10) d_rep$y10_gauss <- (as.matrix(select(d_rep,paste0("pred_",age_range[1]:age_set))) %*% y_window_10g)/0.978
-    if (age_range_width>=25) d_rep$y25_gauss <- (as.matrix(select(d_rep,paste0("pred_",age_range[1]:age_set))) %*% y_window_25g)/0.9573
+    d_rep$y5 <- (as.matrix(dplyr::select(d_rep,paste0("pred_",(age_set-4):age_set))) %*% y_window_5l)/3
+    if (age_range_width>=10) d_rep$y10 <- (as.matrix(dplyr::select(d_rep,paste0("pred_",(age_set-9):age_set))) %*% y_window_10l)/5.5
+    if (age_range_width>=25) d_rep$y25 <- (as.matrix(dplyr::select(d_rep,paste0("pred_",(age_set-24):age_set))) %*% y_window_25l)/13
+    d_rep$y5_gauss <- (as.matrix(dplyr::select(d_rep,paste0("pred_",age_range[1]:age_set))) %*% y_window_5g)/0.993
+    if (age_range_width>=10) d_rep$y10_gauss <- (as.matrix(dplyr::select(d_rep,paste0("pred_",age_range[1]:age_set))) %*% y_window_10g)/0.978
+    if (age_range_width>=25) d_rep$y25_gauss <- (as.matrix(dplyr::select(d_rep,paste0("pred_",age_range[1]:age_set))) %*% y_window_25g)/0.9573
 
 
     # Applying exposure windows at observed age
@@ -97,15 +97,15 @@ SNPxAGE_bias <- function(SNPxAGE_model_output, rep = 2, age_set = 65) {
         ds_temp$y5_gauss_obs <- NA
         ds_temp$y10_gauss_obs <- NA
       } else if (a < (age_range[1]+9) & a >=(age_range[1]+4)) {
-        ds_temp$y5_obs <- (as.matrix(select(ds_temp,paste0("pred_",c((a-4):a)))) %*% y_window_5l)/3
+        ds_temp$y5_obs <- (as.matrix(dplyr::select(ds_temp,paste0("pred_",c((a-4):a)))) %*% y_window_5l)/3
         ds_temp$y10_obs <- NA
-        ds_temp$y5_gauss_obs <- (as.matrix(select(ds_temp,paste0("pred_",c((a-4):a)))) %*% tail(y_window_5g,5))/0.94355
+        ds_temp$y5_gauss_obs <- (as.matrix(dplyr::select(ds_temp,paste0("pred_",c((a-4):a)))) %*% tail(y_window_5g,5))/0.94355
         ds_temp$y10_gauss_obs <- NA
       } else {
-        ds_temp$y5_obs <- (as.matrix(select(ds_temp,paste0("pred_",c((a-4):a)))) %*% y_window_5l)/3
-        if (age_range_width>=10) ds_temp$y10_obs <- (as.matrix(select(ds_temp,paste0("pred_",c((a-9):a)))) %*% y_window_10l)/5.5
-        ds_temp$y5_gauss_obs <- (as.matrix(select(ds_temp,paste0("pred_",c((a-4):a)))) %*% tail(y_window_5g,5))/0.94355
-        if (age_range_width>=10) ds_temp$y10_gauss_obs <- (as.matrix(select(ds_temp,paste0("pred_",c((a-9):a)))) %*% tail(y_window_10g,10))/0.9295
+        ds_temp$y5_obs <- (as.matrix(dplyr::select(ds_temp,paste0("pred_",c((a-4):a)))) %*% y_window_5l)/3
+        if (age_range_width>=10) ds_temp$y10_obs <- (as.matrix(dplyr::select(ds_temp,paste0("pred_",c((a-9):a)))) %*% y_window_10l)/5.5
+        ds_temp$y5_gauss_obs <- (as.matrix(dplyr::select(ds_temp,paste0("pred_",c((a-4):a)))) %*% tail(y_window_5g,5))/0.94355
+        if (age_range_width>=10) ds_temp$y10_gauss_obs <- (as.matrix(dplyr::select(ds_temp,paste0("pred_",c((a-9):a)))) %*% tail(y_window_10g,10))/0.9295
       }
 
       ds_temp$pred_obs <- ds_temp[,paste0("pred_",a)]
