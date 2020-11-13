@@ -9,7 +9,10 @@ SNPxAGE_plot <- function(SNPxAGE_model_output) {
 
   age_range <- range(SNPxAGE_model_output$model$data[SNPxAGE_model_output$params$age])
 
-  pred <- itsadug::get_predictions(SNPxAGE_model_output$model,list(SNP=as.factor(c(0,1,2)), age = c(round(age_range[1],0):round(age_range[2],0))))
+  pred <- itsadug::get_predictions(model = SNPxAGE_model_output$model,
+                                   cond = list(SNP=as.factor(c(0,1,2)),
+                                        age = c(round(age_range[1],0):round(age_range[2],0))))
+  
   ylim_ <- range(c(pred$fit-pred$CI,pred$fit+pred$CI))
 
 
@@ -41,7 +44,10 @@ SNPxAGE_plot <- function(SNPxAGE_model_output) {
   polygon(c(pred_ages, rev(pred_ages)),
           c(out$q025,rev(out$q975)), col=adjustcolor("grey",alpha.f=0.5),
           border=NA)
-  lines(pred_ages,out$est, type = "l", lwd = 2 )}
+  lines(pred_ages,out$est, type = "l", lwd = 2 )
+  
+  }
 
   return(pl)
+  
 }
