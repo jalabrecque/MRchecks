@@ -1,0 +1,23 @@
+Package: MRchecks
+Title: Tools for detecting genetic variants whose effect changes with age
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Jeremy",
+           family = "Labrecque",
+           role = c("aut", "cre"),
+           email = "j.labrecque@erasmusmc.nl",
+           comment = c(ORCID = "0000-0002-1028-2158"))
+Description: This package is a collection of tools to detect SNPs whose effect varies with age whose. owoeosds sd sd. sdsfw. sdfsers s es .
+License: `use_mit_license()`, `use_gpl3_license()` or friends to
+    pick a license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+         mgcv,
+         magrittr,
+         dplyr,
+         itsadug,
+         AER
+
