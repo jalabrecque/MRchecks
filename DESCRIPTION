@@ -19,5 +19,6 @@ Imports:
          magrittr,
          dplyr,
          itsadug,
-         AER
+         AER,
+	 plot functions
 
