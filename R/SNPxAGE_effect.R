@@ -11,7 +11,7 @@ SNPxAGE_effect <- function(SNPxAGE_output, reps=10, ages=40:70) {
   # Predict BMI for all ages adding in variation to give it a similar variation
   # to the original data
 
-  sampled_params <- rmvn(reps,coef(model),model$Vp)
+  sampled_params <- mgcv::rmvn(reps,coef(model),model$Vp)
 
   des_mat <- model.matrix(~ SNP_no_factor, data = data)
 
