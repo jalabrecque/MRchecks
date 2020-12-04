@@ -38,8 +38,8 @@ SNPxAGE_effect <- function(SNPxAGE_output, reps=10, ages=40:70) {
     }) %>%
     t %>%
     as.data.frame %>%
-    set_colnames(c("est","se","q025","q975")) %>%
-    set_rownames(paste0("age_",ages))
+    magrittr::set_colnames(c("est","se","q025","q975")) %>%
+    magrittr::set_rownames(paste0("age_",ages))
 
 
   return(out)
