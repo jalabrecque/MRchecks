@@ -20,5 +20,5 @@ Imports:
          dplyr,
          itsadug,
          AER,
-	 plot functions
+	 plotfunctions
 
