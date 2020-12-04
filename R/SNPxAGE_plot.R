@@ -31,12 +31,12 @@ SNPxAGE_plot <- function(SNPxAGE_model_output) {
   par(mar=c(5.1,4.1,2.1,1.1))
 
 
-  out <- SNPxAGE_effect(SNPxAGE_model_output,ages=c(round(age_range[1],0):round(age_range[2],0)))
+  out <- MRchecks::SNPxAGE_effect(SNPxAGE_model_output,ages=c(round(age_range[1],0):round(age_range[2],0)))
 
   y_range <- range(c(0,out))
 
   pred_ages <- c(round(age_range[1],0):round(age_range[2],0))
-  emptyPlot(xlim = c(round(age_range[1],0),round(age_range[2],0)), ylim = y_range, eegAxis = FALSE,
+  itsadug::emptyPlot(xlim = c(round(age_range[1],0),round(age_range[2],0)), ylim = y_range, eegAxis = FALSE,
             ylab = "Per allele effect", xlab = "Age (years)")
 
   abline(h=0, lty=2)
