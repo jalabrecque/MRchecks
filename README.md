@@ -12,5 +12,5 @@ Installation requires devtools which can be installed with
 can install MRchecks with:
 
 ``` r
-devtools::install_github("tidyverse/ggplot2")
+devtools::install_github("jalabrecque/MRchecks")
 ```

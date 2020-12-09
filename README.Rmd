@@ -11,5 +11,5 @@ MRchecks is a package that performs all the analyses in a forthcoming paper on h
 Installation requires devtools which can be installed with `install.packages("devtools")`. Once you have `devtools` installed you can install MRchecks with:
 
 ``` r
-devtools::install_github("tidyverse/ggplot2")
+devtools::install_github("jalabrecque/MRchecks")
 ```
