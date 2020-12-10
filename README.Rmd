@@ -25,3 +25,35 @@ library(MRchecks)
 data(test_data)
 ```
 
+The data set contains the minimal variables required: 
+
+```{r}
+head(test_data)
+```
+
+An age variable (age), a factor variable with the genetic data (SNP) a phenotype that will be used as the exposure in the MR analysis (y) and here, optionally, a covariate is included  (c).
+
+We can first use the `SNPxAGE_model` function to fit the model we will use as the input for the other functions: 
+```{r}
+SNPxAGE_model_output <- SNPxAGE_model(data = test_data,
+                                      SNP = "SNP",
+                                      phenotype = "y",
+                                      age = "age",
+                                      k = 3,
+                                      covars="c")
+```
+
+The argument k specifies how many internal knots should be used.
+
+We can plot the relationship between age and the phenotype by genetic variant as well as a plot of additive genetic effects by age:
+
+```{r}
+SNPxAGE_plot(SNPxAGE_model_output)
+```
+
+Looking at the output of this plot we might be concerned that the genetic association with the phenotype varies enough that bias is a real concern. Using `SNPxAGE_bias` we can check what the bias would be if all the MR assumptions hold:
+
+```{r}
+SNPxAGE_bias(SNPxAGE_model_output,rep = 10,age_set = 65)
+```
+
