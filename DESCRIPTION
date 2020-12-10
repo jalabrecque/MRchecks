@@ -1,5 +1,5 @@
 Package: MRchecks
-Title: Tools for detecting genetic variants whose effect changes with age
+Title: Tools for detecting genetic variants whose effect changes with age and associated bias
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Jeremy",
