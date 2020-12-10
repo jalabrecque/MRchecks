@@ -54,6 +54,6 @@ SNPxAGE_plot(SNPxAGE_model_output)
 Looking at the output of this plot we might be concerned that the genetic association with the phenotype varies enough that bias is a real concern. Using `SNPxAGE_bias` we can check what the bias would be if all the MR assumptions hold:
 
 ```{r}
-SNPxAGE_bias(SNPxAGE_model_output,rep = 10,age_set = 65)
+SNPxAGE_bias(SNPxAGE_model_output,rep = 10,age_set = 66)
 ```
 
