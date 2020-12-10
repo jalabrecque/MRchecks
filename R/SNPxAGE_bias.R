@@ -120,9 +120,6 @@ SNPxAGE_bias <- function(SNPxAGE_model_output, rep = 2, age_set = 65) {
 
     # Estimation==================================================================
     d_rep$SNP_no_factor <- as.numeric(d_rep$SNP)
-    iv_den <- summary(lm(reformulate(termlabels = "d_rep$SNP_no_factor",
-                                     response = paste0("d_rep$pred_",age_set))))$coef["d_rep$SNP_no_factor",c("Estimate")]
-    iv_avg <- summary(lm(d_rep[,SNPxAGE_model_output$params$phenotype] ~ d_rep$SNP_no_factor))$coef["d_rep$SNP_no_factor",c("Estimate")]
 
     out <- lapply(outcomes, FUN = function(scen) {
       summary(AER::ivreg(as.formula(paste0(scen," ~ ",
@@ -131,12 +128,10 @@ SNPxAGE_bias <- function(SNPxAGE_model_output, rep = 2, age_set = 65) {
                            data = d_rep))$coef[paste0("pred_",age_set),c("Estimate")]
     }) %>%
       unlist %>%
-      c(iv_den, iv_avg, .) %>%
-      magrittr::set_names(c("iv_den65","iv_avg",outcomes))
+      magrittr::set_names(outcomes)
 
     # Observed age
     d_rep_obs$SNP_no_factor <- as.numeric(d_rep_obs$SNP)
-    iv_den_obs <- summary(lm(d_rep_obs$pred_obs ~ d_rep_obs$SNP_no_factor))$coef["d_rep_obs$SNP_no_factor",c("Estimate")]
 
     out_obs <- lapply(outcomes_obs, FUN = function(scen) {
       summary(AER::ivreg(as.formula(paste0(scen," ~ ",
@@ -145,8 +140,7 @@ SNPxAGE_bias <- function(SNPxAGE_model_output, rep = 2, age_set = 65) {
                     data = d_rep_obs))$coef["pred_obs",c("Estimate")]
     }) %>%
       unlist %>%
-      c(iv_den_obs, .) %>%
-      magrittr::set_names(c("iv_den_obs",outcomes_obs))
+      magrittr::set_names(outcomes_obs)
 
 
 
@@ -163,7 +157,7 @@ SNPxAGE_bias <- function(SNPxAGE_model_output, rep = 2, age_set = 65) {
   }) %>%
     t %>%
     magrittr::set_colnames(c("est","se","q025","q975")) %>%
-    magrittr::set_rownames(c("iv_den65","iv_avg",outcomes,"iv_den_obs",outcomes_obs))
+    magrittr::set_rownames(c(outcomes,outcomes_obs))
 
   return(output)
 

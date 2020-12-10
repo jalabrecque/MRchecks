@@ -48,6 +48,8 @@ An age variable (age), a factor variable with the genetic data (SNP) a
 phenotype that will be used as the exposure in the MR analysis (y) and
 here, optionally, a covariate is included (c).
 
+### Run model
+
 We can first use the `SNPxAGE_model` function to fit the model we will
 use as the input for the other functions:
 
@@ -62,6 +64,8 @@ SNPxAGE_model_output <- SNPxAGE_model(data = test_data,
 
 The argument k specifies how many internal knots should be used.
 
+### Plotting age-varying genetic associations
+
 We can plot the relationship between age and the phenotype by genetic
 variant as well as a plot of additive genetic effects by age:
 
@@ -73,6 +77,8 @@ SNPxAGE_plot(SNPxAGE_model_output)
 
     ## NULL
 
+### Plasmode simulation for potential bias
+
 Looking at the output of this plot we might be concerned that the
 genetic association with the phenotype varies enough that bias is a real
 concern. Using `SNPxAGE_bias` we can check what the bias would be if all
@@ -83,16 +89,16 @@ SNPxAGE_bias(SNPxAGE_model_output,rep = 10,age_set = 66)
 ```
 
     ##                     est          se       q025      q975
-    ## iv_den65      0.1076253 0.017695563 0.08948791 0.1384105
+    ## iv_den65      0.1115721 0.014846260 0.09630683 0.1380786
     ## iv_avg        0.1837739 0.000000000 0.18377389 0.1837739
-    ## y5            1.2898014 0.069712954 1.18353034 1.3765784
-    ## y10           1.5981528 0.145381375 1.37640694 1.7778295
-    ## y25           1.9719371 0.256242953 1.58135797 2.2712877
-    ## y5_gauss      1.5396353 0.130007016 1.34142703 1.7012414
-    ## y10_gauss     1.9658715 0.236504464 1.60502414 2.2565629
-    ## y25_gauss     2.1781173 0.329665383 1.67832382 2.5673733
-    ## iv_den_obs    0.2038226 0.005746736 0.19664140 0.2118212
-    ## y5_obs        0.9919406 0.006119017 0.98342803 1.0007677
-    ## y10_obs       1.0192138 0.014089125 0.99913459 1.0396090
-    ## y5_gauss_obs  0.9815818 0.010959892 0.96613161 0.9973391
-    ## y10_gauss_obs 1.0085943 0.022134060 0.97827183 1.0409957
+    ## y5            1.2851744 0.060278790 1.19928063 1.3780841
+    ## y10           1.5879244 0.125341188 1.40905011 1.7802733
+    ## y25           1.9467673 0.216444349 1.63515728 2.2666547
+    ## y5_gauss      1.5309052 0.112349259 1.37081301 1.7039276
+    ## y10_gauss     1.9485278 0.203458797 1.65779241 2.2596894
+    ## y25_gauss     2.1394242 0.274612100 1.74326952 2.5316138
+    ## iv_den_obs    0.2085182 0.006455139 0.19870102 0.2174809
+    ## y5_obs        0.9903517 0.005084901 0.98564219 1.0002883
+    ## y10_obs       1.0158774 0.011498401 1.00156286 1.0363722
+    ## y5_gauss_obs  0.9786686 0.009143546 0.97038695 0.9967028
+    ## y10_gauss_obs 1.0029113 0.018179919 0.98230468 1.0365301
