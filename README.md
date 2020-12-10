@@ -20,3 +20,12 @@ can install MRchecks with:
 ``` r
 devtools::install_github("jalabrecque/MRchecks")
 ```
+
+## Usage
+
+The package comes with a small test data set called `test_data`:
+
+``` r
+library(MRchecks)
+data(test_data)
+```
