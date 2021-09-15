@@ -1,6 +1,9 @@
 
 # MRchecks
 
+[![DOI](https://zenodo.org/badge/305339879.svg)](https://zenodo.org/badge/latestdoi/305339879)
+
+
 ## Overview
 
 `MRchecks` is a package that performs all the analyses in a forthcoming
