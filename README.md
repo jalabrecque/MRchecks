@@ -1,5 +1,5 @@
 
-# MRchecks
+# MRchecks: Mendelian randomization biases analyses for time-varying genetic relationships in R
 
 [![DOI](https://zenodo.org/badge/305339879.svg)](https://zenodo.org/badge/latestdoi/305339879)
 
